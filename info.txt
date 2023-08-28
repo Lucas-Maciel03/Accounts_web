@@ -1,0 +1,21 @@
+Cadastro de conta
+ - nome
+ - email
+ - senha (senha deve ter extamente 6 digitos)
+ - saldo
+
+Consultar saldo
+ - busca por id e senha do usuario q está logado
+
+Depositar 
+ - o sistema ira conferir se o id e senha existem caso seja true irá pedir o valor de deposito
+
+Sacar 
+ - o sistema ira conferir se o id e senha existem caso seja true irá pedir o valor de saque
+
+Transferencia
+ - a tranferencia vai ser por meio de email, se o email do recebedor estiver no sistema 
+ o mesmo ira pedir o valor que deseja transferir
+
+Pagina inicial
+ - a home ira exibir os valores de tranferencia e saque que o usuario logado fez
