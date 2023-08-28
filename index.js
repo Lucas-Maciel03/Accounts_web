@@ -7,10 +7,10 @@ const FileStore = require('session-file-store')(session)
 const app = express()
 
 //import connection
-const conn = require('./db/conn')
+const conn = require('./src/db/conn')
 
 //import models
-const User = require('./models/User')
+const User = require('./src/models/User')
 
 //config template engine
 app.engine('handlebars', exphbs.engine())
