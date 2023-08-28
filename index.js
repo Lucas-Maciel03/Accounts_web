@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const flash = require('express-flash')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
+const path = require('path'); // Importe o módulo 'path'
 
 const app = express()
 
@@ -12,16 +13,20 @@ const conn = require('./src/db/conn')
 //import models
 const User = require('./src/models/User')
 
+//import routes
+const authRoutes = require('./src/routes/authRoutes')
+
 //config template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
+app.set('views', path.join(__dirname, 'src', 'views'));
 
 //middlewares
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 //public path
-app.use(express.static('public'))
+app.use(express.static('src/public'))
 
 //flash messages
 app.use(flash())
@@ -56,8 +61,8 @@ app.use((req, res, next) => {
 })
 
 //routes
-
-app.use('/')
+// app.use('/accounts', accountsRoutes)
+app.use('/', authRoutes)
 
 //start connection
 conn.sync()

@@ -2,7 +2,7 @@
     font-family: helvetica;
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background-color: #1d1f1f;
     color: #fff;
 }
 
@@ -17,8 +17,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222;
-    border-bottom: 1px solid #f6982d;
+    background-color: #1d1f1f;
+    border-bottom: 1px solid #4169E1;
 }
 
 #navbar ul {
@@ -37,7 +37,7 @@
 }
 
 #navbar ul li a:hover {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 /* CONTAINER */
@@ -69,13 +69,13 @@
 .auth-container h2 {
     margin-bottom: 1em;
     color: #FFF;
-    border-left: 4px solid #f6982d;
+    border-left: 4px solid #4169E1;
     padding: 0.3em;
     width: 100px;
 }
 
 .auth-container a {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .form-control {
@@ -93,14 +93,14 @@
 .form-control textarea {
     padding: 7px;
     border-radius: 3px;
-    border: 1px solid #f6982d;
+    border: 1px solid #4169E1;
 }
 
 form input[type="submit"],
 .btn {
     background-color: transparent;
-    color: #f6982d;
-    border: 2px solid #f6982d;
+    color: #4169E1;
+    border: 2px solid #4169E1;
     padding: 0.5em 1.2em;
     margin-bottom: 1em;
     font-size: 1em;
@@ -113,13 +113,13 @@ form input[type="submit"],
 
 form input[type="submit"]:hover,
 .btn:hover {
-    background-color: #f6982d;
+    background-color: #4169E1;
     color:#FFF;
 }
 
 /* CREATE / EDIT FORM */
 .tought-form-container a{
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .tought-form-container a:hover{
@@ -129,7 +129,7 @@ form input[type="submit"]:hover,
 .tought-form-container h1{
     margin: 1em 0;
     color: #fff;
-    border-left: 4px solid #f6982d;
+    border-left: 4px solid #4169E1;
     padding: 0.3em;
 }
 
@@ -146,7 +146,7 @@ form input[type="submit"]:hover,
 }
 
 .title-container h2 {
-    border-left: 4px solid #f6982d;
+    border-left: 4px solid #4169E1;
     padding: 10px;
 }
 
@@ -160,7 +160,7 @@ form input[type="submit"]:hover,
 
 .dashboard li {
     padding: 12px;
-    border-bottom: 1px solid #f6982d;
+    border-bottom: 1px solid #4169E1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -168,7 +168,7 @@ form input[type="submit"]:hover,
 
 .dashboard .label {
     font-weight: bold;
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .dashboard .actions {
@@ -182,7 +182,7 @@ form input[type="submit"]:hover,
 }
 
 .dashboard a {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .dashboard p {
@@ -203,7 +203,7 @@ form input[type="submit"]:hover,
 }
 
 .home-header span {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .data-time {
@@ -255,7 +255,7 @@ form input[type="submit"]:hover,
 .order-container button:hover,
 .order-container i:hover,
 .order-container a:hover {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 .order-container button,
@@ -278,7 +278,7 @@ form input[type="submit"]:hover,
 }
 
 .title-container span {
-    color: #f6982d;
+    color: #4169E1;
 }
 
 /* FOOTER */
@@ -287,10 +287,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #f6982d;
+    border-top: 1px solid #4169E1;
 }
 
 span {
     font-weight: bold;
-    color: #f6982d;
+    color: #4169E1;
 }

@@ -1,0 +1,48 @@
+<div class="auth-container">
+    <h2>Registrar</h2>
+    {{#if next}}
+        <form action="/register" method="post">
+        <div class="form-control">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" placeholder="Digite seu nome" required>
+        </div>
+        <div class="form-control">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" placeholder="Digite seu e-mail" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Senha:</label>
+            <input type="password" name="password" placeholder="Digite sua senha" required>
+        </div>
+        <div class="form-control">
+            <label for="confirmpassword">Confirmação de senha:</label>
+            <input type="password" name="confirmpassword" placeholder="Confirme sua senha" required>
+        </div>
+
+        <input type="submit" value="Cadastrar">
+        <p>Já tem conta? <a href="/login">clique aqui!</a></p>
+    </form>
+    {{else}}
+    <form action="/register" method="post">
+        <div class="form-control">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" placeholder="Digite seu nome" value="{{name}}" required>
+        </div>
+        <div class="form-control">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" placeholder="Digite seu e-mail" value="{{email}}" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Senha:</label>
+            <input type="password" name="password" placeholder="Digite sua senha" value="{{password}}" required>
+        </div>
+        <div class="form-control">
+            <label for="confirmpassword">Confirmação de senha:</label>
+            <input type="password" name="confirmpassword" placeholder="Confirme sua senha" value="{{confirmpassword}}" required>
+        </div>
+
+        <input type="submit" value="Cadastrar">
+        <p>Já tem conta? <a href="/login">clique aqui!</a></p>
+    </form>
+    {{/if}}
+</div>
