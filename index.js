@@ -12,9 +12,15 @@ const conn = require('./src/db/conn')
 
 //import models
 const User = require('./src/models/User')
+const Transaction = require('./src/models/Transaction')
 
 //import routes
 const authRoutes = require('./src/routes/authRoutes')
+const accountsRoutes = require('./src/routes/accountsRoutes')
+
+//import controller apenas p acessar rota /
+const AccountsController = require('./src/controllers/AccountsController')
+const { checkAuth } = require('./src/helpers/checkAuth')
 
 //config template engine
 app.engine('handlebars', exphbs.engine())
@@ -61,8 +67,10 @@ app.use((req, res, next) => {
 })
 
 //routes
-// app.use('/accounts', accountsRoutes)
 app.use('/', authRoutes)
+app.use('/accounts', accountsRoutes)
+
+app.get('/', checkAuth, AccountsController.showTransactions)
 
 //start connection
 conn.sync()
