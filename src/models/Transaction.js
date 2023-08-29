@@ -15,9 +15,6 @@ const Transaction = db.define('Transaction', {
         required: true,
         allowNull: false
     },
-    // receiverId: {
-    //     type: 
-    // }
 })
 
 User.hasMany(Transaction, { foreignKey: 'senderId', as: 'sentTransactions' });
