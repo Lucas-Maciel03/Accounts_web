@@ -1,0 +1,10 @@
+<div class="auth-container">
+    <h2>Depositar</h2>
+        <form action="/accounts/deposit" method="post">
+        <input type="hidden" name="type" value="deposit">
+        <div class="form-control">
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" placeholder="Informe o valor para deposito" min="0" step="0.01" required>
+        </div>
+        <input type="submit" value="Depositar">
+    </form>

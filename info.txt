@@ -8,7 +8,7 @@ Consultar saldo
  - busca por id e senha do usuario q está logado
 
 Depositar 
- - o sistema ira conferir se o id e senha existem caso seja true irá pedir o valor de deposito
+ - o sistema ira conferir por id se a senha está correta caso seja true irá pedir o valor de deposito
 
 Sacar 
  - o sistema ira conferir se o id e senha existem caso seja true irá pedir o valor de saque

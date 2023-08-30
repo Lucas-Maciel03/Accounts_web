@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toughts</title>
+    <title>Accounts</title>
     <link rel="shortcut icon" href="https://www.flaticon.com/br/icone-gratis/cofrinho_584093" type="">
     <link rel="stylesheet" href="/css/styles.css">
     {{!-- BOOTSTRAP ICONS  --}}
@@ -15,10 +15,12 @@
              <i class="bi bi-piggy-bank-fill"></i>
         </a>
         <ul>
-            <li><a href="/">Pensamentos</a></li>
+            <li><a href="/">Histórico</a></li>
             {{!-- URLs após autenticação --}}
             {{#if session.userid}}
-                <li><a href="/toughts/dashboard">Dashboard</a></li>
+                <li><a href="/accounts/deposit">Depositar</a></li>
+                <li><a href="/accounts/transfer">Transferir</a></li>
+                <li><a href="/accounts/withdraw">Sacar</a></li>
                 <li><a href="/logout">Sair</a></li>
             {{else}}
                 <li><a href="/login">Entrar</a></li>
