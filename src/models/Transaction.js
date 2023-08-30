@@ -5,7 +5,7 @@ const User = require('./User')
 const db = require('../db/conn')
 
 const Transaction = db.define('Transaction', {
-    value: {
+    amount: {
         type: DataTypes.DECIMAL(10, 2),
         required: true,
         allowNull: false,
