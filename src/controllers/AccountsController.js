@@ -19,23 +19,23 @@ module.exports = class AccountsController{
     }
 
     static async depositPost(req, res){
-        try {
-            const amount = parseFloat(req.body.amount)
-            const type = req.body.type
-            const id = req.session.userid   
+        const amount = parseFloat(req.body.amount)
+        const type = req.body.type
+        const id = req.session.userid   
             
-            if(isNaN(amount)){
-                req.flash('message', 'O valor informado não é um número, tente novamente!')
-                res.render('transactions/deposit')
-                return
-            }
+        if(isNaN(amount)){
+            req.flash('message', 'O valor informado não é um número, tente novamente!')
+            res.render('transactions/deposit')
+            return
+        }
             
-            if(amount === 0 || amount < 0){
-                req.flash('message', 'O valor informado é inválido, tente novamente!')
-                res.redirect('/accounts/deposit')
-                return
-            }
+        if(amount === 0 || amount < 0){
+            req.flash('message', 'O valor informado é inválido, tente novamente!')
+            res.redirect('/accounts/deposit')
+            return
+        }
 
+        try {
             //Inserindo deposito na tabela User
             const userData = await User.findOne({where: {id}, raw: true})
             const user = {
@@ -63,25 +63,23 @@ module.exports = class AccountsController{
     }
 
     static async withdrawPost(req, res){
+        const id = req.session.userid
+        const amount = parseFloat(req.body.amount)
+        const type = req.body.type
+
+        if(isNaN(amount)){
+            req.flash('message', 'O valor informado não é um número, tente novamente!')
+            res.render('transactions/withdraw')
+            return
+        }
+
+        if(amount === 0 || amount < 0){
+            req.flash('message', 'O valor informado é inválido, tente novamente!')
+            res.redirect('/accounts/withdraw')
+            return
+        }
+
         try {
-            const id = req.session.userid
-            const amount = parseFloat(req.body.amount)
-            const type = req.body.type
-
-            console.log(typeof(amount))
-
-            if(isNaN(amount)){
-                req.flash('message', 'O valor informado não é um número, tente novamente!')
-                res.render('transactions/withdraw')
-                return
-            }
-
-            if(amount === 0 || amount < 0){
-                req.flash('message', 'O valor informado é inválido, tente novamente!')
-                res.redirect('/accounts/withdraw')
-                return
-            }
-
             const userData = await User.findOne({where: {id}, raw: true})
 
             const user = {balance: parseFloat(userData.balance) - amount}
