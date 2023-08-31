@@ -1,4 +1,8 @@
 <div class="auth-container">
+    <div class="space">
+    {{> balance}} 
+</div>
+
     <h2>Depositar</h2>
         <form action="/accounts/deposit" method="post">
         <input type="hidden" name="type" value="deposit">

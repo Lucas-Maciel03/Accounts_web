@@ -23,7 +23,8 @@ const AccountsController = require('./src/controllers/AccountsController')
 const { checkAuth } = require('./src/helpers/checkAuth')
 
 //config template engine
-app.engine('handlebars', exphbs.engine())
+const hbs = exphbs.create({partialsDir: ['src/views/partials']})
+app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'src', 'views'));
 
