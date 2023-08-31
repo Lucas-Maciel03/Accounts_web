@@ -9,7 +9,7 @@ module.exports = class AccountsController{
 
         // const user = req.user
         // console.log('fala', user)
-        
+
         res.render('transactions/home', {balance})
     }
 
@@ -26,8 +26,15 @@ module.exports = class AccountsController{
         if(isNaN(amount)){
             req.flash('message', 'O valor informado não é um número, tente novamente!')
             res.render('transactions/deposit')
+            return
         }
         
+        if(amount === 0){
+            req.flash('message', 'O valor informado é inválido, tente novamente!')
+            res.redirect('/accounts/deposit')
+            return
+        }
+
         try {
             //Inserindo deposito na tabela User
             const userData = await User.findOne({where: {id}, raw: true})
