@@ -1,0 +1,15 @@
+{{!-- Partials para exibir o Saldo o usuario --}}
+<div class="auth-container">
+    <div class="space">
+    {{> balance}} 
+</div>
+
+<h2>Sacar</h2>
+        <form action="/accounts/withdraw" method="post">
+        <input type="hidden" name="type" value="withdraw">
+        <div class="form-control">
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" placeholder="Informe o valor para saque" min="0" step="0.01" required>
+        </div>
+        <input type="submit" value="Sacar">
+    </form>
