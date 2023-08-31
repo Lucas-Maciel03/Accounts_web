@@ -2,12 +2,20 @@ const User = require('../models/User')
 const Transaction = require('../models/Transaction')
 
 module.exports = class AccountsController{
-    static showTransactions(req, res){
-        res.render('transactions/home')
+    static async showTransactions(req, res){
+        const id = req.session.userid
+        const user = await User.findOne({where: {id}, raw: true})
+        const balance = user.balance
+
+        // const user = req.user
+        // console.log('fala', user)
+        
+        res.render('transactions/home', {balance})
     }
 
     static deposit(req, res){
-        res.render('transactions/deposit')
+        const balance = req.user.balance
+        res.render('transactions/deposit', {balance})
     }
 
     static async depositPost(req, res){
