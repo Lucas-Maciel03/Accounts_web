@@ -97,4 +97,77 @@ module.exports = class AccountsController{
             console.log(error)
         }
     }
+
+    static transfer(req, res){
+        const balance = req.user.balance
+        res.render('transactions/transfer', {balance})
+    }
+
+    static async transferPost(req, res){
+        const id = req.session.userid
+        const amount = parseFloat(req.body.amount)
+        const email = req.body.email
+        const type = req.body.type
+
+        if(isNaN(amount)){
+            req.flash('message', 'O valor informado não é um número, tente novamente!')
+            res.render('transactions/withdraw')
+            return
+        }
+
+        if(amount === 0 || amount < 0){
+            req.flash('message', 'O valor informado é inválido, tente novamente!')
+            res.redirect('/accounts/withdraw')
+            return
+        }
+        
+        //check if userReceiver exists
+        const userReceiver = await User.findOne({where: {email}, raw:true})
+        if(!userReceiver){
+            req.flash('message', 'Usuário destinatário não existe, tente novamante!')
+            res.redirect('/accounts/transfer')
+            return
+        }
+
+        //buscando dados do userSender
+        const userSender = await User.findOne({where: {id}, raw: true})
+        if(userReceiver.email === userSender.email){
+            req.flash('message', 'Você não pode transferir para si mesmo, tente novamante!')
+            res.redirect('/accounts/transfer')
+            return
+        }
+        
+        if(userSender.balance < amount){
+            req.flash('message', 'Você não tem saldo suficiente para realizar essa transfêrencia, tente novamante!')
+            res.redirect('/accounts/transfer')
+            return
+        }
+
+        try {
+            const userSenderBalance = {
+                balance: parseFloat(userSender.balance) - amount
+            }
+            const userReceiverBalance = {
+                balance: parseFloat(userReceiver.balance) + amount
+            }
+
+            //add amount in userReceiver
+            await User.update(userReceiverBalance, {where: {email}})
+
+            //remove amount in userSender
+            await User.update(userSenderBalance, {where: {id}})
+
+            //criando registro na tabela transaction
+            await Transaction.create({amount, type, senderId: id, receiverId: userReceiver.id})
+
+            req.flash('message', `Você transferiu R$ ${amount} para ${userReceiver.name}!`)
+
+            req.session.save(() => {
+                res.redirect('/accounts/transfer')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
 }
