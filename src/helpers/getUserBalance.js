@@ -4,7 +4,6 @@ module.exports = async function getUserBalance(req, res, next){
     try {
         const id = req.session.userid;
         const user = await User.findOne({where: {id}, raw: true})
-        console.log('ola', user)
         req.user = user
         next()
     } catch (error) {
@@ -12,5 +11,3 @@ module.exports = async function getUserBalance(req, res, next){
        
     }
 }
-
-// module.exports = getUserBalance
