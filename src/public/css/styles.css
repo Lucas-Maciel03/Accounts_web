@@ -206,7 +206,7 @@ form input[type="submit"]:hover,
     color: #4169E1;
 }
 
-.data-time {
+span .data-time {
     color:#dddddd;
 }
 
@@ -235,6 +235,7 @@ form input[type="submit"]:hover,
     align-items: center;
     max-width: 80%;
     margin: 0 auto 1em;
+    padding-bottom: 10px;
 }
 
 .order-container span {
@@ -247,6 +248,9 @@ form input[type="submit"]:hover,
 }
 
 .order-container button {
+    text-decoration: underline;
+    font-size: 1em;
+    padding-right: 5px;
     margin-bottom: 0;
     border: none;
     cursor: pointer;
@@ -272,9 +276,11 @@ form input[type="submit"]:hover,
 }
 
 .toughts-container blockquote {
-    font-style: italic;
-    font-size: 2em;
-    margin-bottom: 0 4em;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.5em;
+    /* margin-bottom: 0 4em; */
+    padding-bottom: 0.5em;
 }
 
 .title-container span {
@@ -298,4 +304,9 @@ span {
 .space {
     display: flex;
     justify-content: right;
+}
+
+.receiver {
+    color: #b8daff;
+    padding-top: 5px;
 }
