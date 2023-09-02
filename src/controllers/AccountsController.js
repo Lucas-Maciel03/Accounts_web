@@ -1,16 +1,46 @@
 const User = require('../models/User')
 const Transaction = require('../models/Transaction')
 
+const {Op} = require('sequelize')
+
 module.exports = class AccountsController{
     static async showTransactions(req, res){
         const id = req.session.userid
         const user = await User.findOne({where: {id}, raw: true})
         const balance = user.balance
 
-        // const user = req.user
-        // console.log('fala', user)
+        const transactionsData = await Transaction.findAll({
+            where: {[Op.or]: [
+                {senderId: id},
+                {receiverId: id}
+            ]},
+            include: [
+                {
+                  model: User,
+                  as: 'receiver', // Defina um alias para a associação
+                  required: false
+                }
+              ]
+        })
 
-        res.render('transactions/home', {balance})
+        const transaction = transactionsData.map((response) => response.get({plain: true}))
+        
+        //formatando datas
+        transaction.forEach((result) => {
+            const rawDate = result.createdAt
+            const formattedDate = new Date(rawDate).toLocaleString('pt-BR', {
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+            })
+            const formattedMonth = formattedDate.split(' ')[2];
+            const uppercaseMonth = formattedMonth.charAt(0).toUpperCase() + formattedMonth.slice(1);
+            const finalFormattedDate = `${formattedDate.split(' ')[0]} ${uppercaseMonth} ${formattedDate.split(' ')[4]}`;
+
+            result.createdAt = finalFormattedDate
+        })
+
+        res.render('transactions/home', {balance, transaction})
     }
 
     static deposit(req, res){
@@ -136,7 +166,7 @@ module.exports = class AccountsController{
             res.redirect('/accounts/transfer')
             return
         }
-        
+
         if(userSender.balance < amount){
             req.flash('message', 'Você não tem saldo suficiente para realizar essa transfêrencia, tente novamante!')
             res.redirect('/accounts/transfer')
