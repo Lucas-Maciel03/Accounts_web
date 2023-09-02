@@ -1,6 +1,24 @@
-{{!-- Partials para exibir o Saldo o usuario --}}
-<div class="space">
-    {{> balance}} 
-</div>
+ <div class="home-header">
+    {{!-- Partials para exibir o Saldo o usuario --}}
+    <div class="space">
+        {{> balance}} 
+    </div>
 
-<h1>Histórico de Transações</h1>
+        <h1>Histórico de Transações</h1>
+
+    <div class="toughts-container">
+        {{#each transaction}}
+            <figure>
+                <blockquote>
+                    {{this.type}}
+                </blockquote>
+                <figcaption>Valor: <span>R$ {{this.amount}}</span>
+                    &#8226; <span class="data-time">{{this.createdAt}}</span>
+                </figcaption>
+                <div class="receiver">
+                    Enviado para: {{this.receiver.name}}
+                </div>
+            </figure>
+        {{/each}}
+    </div>
+</div>

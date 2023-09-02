@@ -15,9 +15,9 @@
              <i class="bi bi-piggy-bank-fill"></i>
         </a>
         <ul>
-            <li><a href="/">Histórico</a></li>
             {{!-- URLs após autenticação --}}
             {{#if session.userid}}
+                <li><a href="/">Histórico</a></li>
                 <li><a href="/accounts/deposit">Depositar</a></li>
                 <li><a href="/accounts/transfer">Transferir</a></li>
                 <li><a href="/accounts/withdraw">Sacar</a></li>
